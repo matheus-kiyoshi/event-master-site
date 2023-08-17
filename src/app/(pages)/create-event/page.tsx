@@ -1,4 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Input } from '@/app/components/Form/Input'
+import { InputFile } from '@/app/components/Form/InputFile'
 import categories from '@/app/utils/categories'
 
 export default function CreateEvent() {
@@ -83,6 +85,41 @@ export default function CreateEvent() {
           <p className="text-blue text-base font-light">
             Crie o seu próprio evento da maneira que você preferir! :)
           </p>
+          <div className="my-4">
+            <p className="text-blue text-base font-medium">Banner</p>
+            <p className="text-neutral-500 text-sm font-light">
+              Insira um banner no formato 336x280
+            </p>
+            <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow">
+              <InputFile />
+            </div>
+          </div>
+          <div className="my-4">
+            <p className="text-blue text-base font-medium">Flyers</p>
+            <p className="text-neutral-500 text-sm font-light">
+              Insira até três flyers
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow">
+                <InputFile />
+              </div>
+              <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow">
+                <InputFile />
+              </div>
+              <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow">
+                <InputFile />
+              </div>
+            </div>
+          </div>
+          <div className="my-4">
+            <p className="text-blue text-base font-medium">Mapa do Evento</p>
+            <p className="text-neutral-500 text-sm font-light">
+              Insira o Mapa do Evento indicando os setores
+            </p>
+            <div className="w-full h-56 bg-zinc-300 rounded-3xl shadow">
+              <InputFile />
+            </div>
+          </div>
         </div>
       </div>
     </div>
