@@ -41,14 +41,16 @@ export default function CreateEvent() {
               type="time"
             />
           </div>
-          <div className="grid grid-cols-5 gap-2">
-            <p className="text-blue text-base font-medium"></p>
-            {categories.map((category) => (
-              <div key={category.id} className="text-blue">
-                <input type="checkbox" className="mr-2" />
-                <label>{category.name}</label>
-              </div>
-            ))}
+          <div className="grid gap-2">
+            <p className="text-blue text-base font-medium">Categorias</p>
+            <div className="flex flex-wrap gap-4">
+              {categories.map((category) => (
+                <div key={category.id} className="text-blue">
+                  <input type="checkbox" className="mr-2" />
+                  <label>{category.name}</label>
+                </div>
+              ))}
+            </div>
           </div>
           <div>
             <p className="text-blue font-medium text-base">Valor</p>
@@ -80,7 +82,7 @@ export default function CreateEvent() {
             />
           </div>
         </div>
-        <div className="mb-4 ml-4">
+        <div className="mb-4 ml-0 mr-4 md:mr-2 md:ml-4">
           <p className="text-blue text-2xl font-medium">Adicionar Eventos</p>
           <p className="text-blue text-base font-light">
             Crie o seu próprio evento da maneira que você preferir! :)
@@ -90,7 +92,7 @@ export default function CreateEvent() {
             <p className="text-neutral-500 text-sm font-light">
               Insira um banner no formato 336x280
             </p>
-            <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow">
+            <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow mt-2">
               <InputFile />
             </div>
           </div>
@@ -99,7 +101,7 @@ export default function CreateEvent() {
             <p className="text-neutral-500 text-sm font-light">
               Insira até três flyers
             </p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2 mt-2">
               <div className="w-full h-28 bg-zinc-300 rounded-3xl shadow">
                 <InputFile />
               </div>
@@ -116,7 +118,7 @@ export default function CreateEvent() {
             <p className="text-neutral-500 text-sm font-light">
               Insira o Mapa do Evento indicando os setores
             </p>
-            <div className="w-full h-56 bg-zinc-300 rounded-3xl shadow">
+            <div className="w-full h-56 bg-zinc-300 rounded-3xl shadow mt-2">
               <InputFile />
             </div>
           </div>

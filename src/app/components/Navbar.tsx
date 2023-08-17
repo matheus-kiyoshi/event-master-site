@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Navbar() {
   return (
-    <nav className="bg-blue mx-auto px-6 absolute top-0 w-full h-16 flex items-center">
+    <nav className="bg-blue mx-auto px-6 fixed top-0 w-full h-16 flex items-center z-10">
       <Image
         src="/em.webp"
         alt="logo"
