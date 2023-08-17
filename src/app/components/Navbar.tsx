@@ -8,7 +8,8 @@ export default function Navbar() {
         alt="logo"
         width={200}
         height={200}
-        className="mr-24"
+        priority={true}
+        className="mr-24 w-auto h-auto"
       />
       <div className="flex items-center w-[50vw]">
         <input
