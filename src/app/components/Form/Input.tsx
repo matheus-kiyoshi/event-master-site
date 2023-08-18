@@ -5,6 +5,8 @@ interface IInput {
   type: string
   title: string
   className?: string
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const InputBase: ForwardRefRenderFunction<
@@ -20,7 +22,6 @@ export const InputBase: ForwardRefRenderFunction<
           placeholder={placeholder}
           ref={ref}
           rows={5}
-          {...rest}
         />
       </div>
     )

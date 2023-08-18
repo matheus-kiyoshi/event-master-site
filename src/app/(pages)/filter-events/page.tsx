@@ -1,11 +1,38 @@
 /* eslint-disable react/no-unescaped-entities */
+'use client'
 import CardFilter from '@/app/components/CardFilter'
 import { Button } from '@/app/components/Form/Button'
 import { Input } from '@/app/components/Form/Input'
+import { AutoComplete } from '@/app/components/Form/InputAutoComplete'
 import { InputRange } from '@/app/components/Form/InputRange'
 import categories from '@/app/utils/categories'
+import fetchWrapper from '@/app/utils/fetchWrapper'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export default function FilterEvents() {
+  const searchParams = useSearchParams()
+  const [events, setEvents] = useState([])
+
+  const getEvents = async (data: any) => {
+    const response = await fetchWrapper(
+      '/events/filter?' + new URLSearchParams({ name: data.name }).toString(),
+      {
+        method: 'GET',
+      },
+    )
+
+    setEvents(response)
+  }
+
+  useEffect(() => {
+    if (searchParams.get('q')) {
+      getEvents({
+        name: searchParams.get('q'),
+      })
+    }
+  }, [searchParams])
+
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-1 p-8">
@@ -21,11 +48,7 @@ export default function FilterEvents() {
             placeholder="Insira o nome do seu evento"
             type="text"
           />
-          <Input
-            title="Localização"
-            placeholder="Insira o endereço do seu evento"
-            type="text"
-          />
+          <AutoComplete />
           <div className="grid grid-cols-2 gap-3">
             <Input
               title="Data"
@@ -68,10 +91,9 @@ export default function FilterEvents() {
           <p className="text-blue text-base font-normal">
             Busque o evento que é a sua cara de maneira mais detalhada!
           </p>
-          <CardFilter />
-          <CardFilter />
-          <CardFilter />
-          <CardFilter />
+          {events.map((event, index) => (
+            <CardFilter key={index} event={event} />
+          ))}
         </div>
       </div>
     </div>
